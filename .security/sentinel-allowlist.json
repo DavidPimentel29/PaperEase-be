@@ -1,5 +1,5 @@
 {
-  "paths": ["process.env"],
+  "paths": ["process.env", ".env.example"],
   "domains": ["127.0.0.1", "localhost"],
   "commands": []
 }
