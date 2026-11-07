@@ -1,6 +1,8 @@
+const crypto = require('crypto');
+
 function generarIdFormulario() {
   const timestamp = Date.now().toString();
-  const random = Math.random().toString(36).substr(2, 5);
+  const random = crypto.randomBytes(4).toString('hex');
   return `FORM_${timestamp}_${random}`.toUpperCase();
 }
 

@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
 const controller = require('../controllers/formulario.controller');
 const serverConfig = require('../../config/server');
 const { verificarAutenticacion, verificarEstudiante, verificarTrabajadorSocial } = require('../middleware/auth');
@@ -16,7 +17,7 @@ const storage = multer.diskStorage({
     cb(null, serverConfig.uploadsDir);
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const uniqueSuffix = Date.now() + '-' + crypto.randomUUID();
     const safeName = file.originalname.replace(/\s+/g, '_');
     cb(null, `${uniqueSuffix}-${safeName}`);
   }
